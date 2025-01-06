@@ -1,0 +1,54 @@
+string           uid                    # <class 'str'> V
+NetDevice        dev_id                 # <enum 'NetDevice'> D1
+Command          cmd_type               # <class 'eci.primitives.command.Command'> CMD
+MessageID        msg_id                 # <enum 'MessageID'> caDigitStatus_all
+uint8            data_len               # <class 'int'> 
+bool             thumb_fault            # <class 'bool'> 
+bool             thumb_gripping         # <class 'bool'> 
+bool             thumb_at_open          # <class 'bool'> 
+bool             thumb_at_posn          # <class 'bool'> 
+bool             thumb_touch            # <class 'bool'> 
+bool             thumb_stall            # <class 'bool'> 
+bool             thumb_stopped          # <class 'bool'> 
+bool             thumb_active           # <class 'bool'> 
+bool             index_fault            # <class 'bool'> 
+bool             index_gripping         # <class 'bool'> 
+bool             index_at_open          # <class 'bool'> 
+bool             index_at_posn          # <class 'bool'> 
+bool             index_touch            # <class 'bool'> 
+bool             index_stall            # <class 'bool'> 
+bool             index_stopped          # <class 'bool'> 
+bool             index_active           # <class 'bool'> 
+bool             middle_fault           # <class 'bool'> 
+bool             middle_gripping        # <class 'bool'> 
+bool             middle_at_open         # <class 'bool'> 
+bool             middle_at_posn         # <class 'bool'> 
+bool             middle_touch           # <class 'bool'> 
+bool             middle_stall           # <class 'bool'> 
+bool             middle_stopped         # <class 'bool'> 
+bool             middle_active          # <class 'bool'> 
+bool             ring_fault             # <class 'bool'> 
+bool             ring_gripping          # <class 'bool'> 
+bool             ring_at_open           # <class 'bool'> 
+bool             ring_at_posn           # <class 'bool'> 
+bool             ring_touch             # <class 'bool'> 
+bool             ring_stall             # <class 'bool'> 
+bool             ring_stopped           # <class 'bool'> 
+bool             ring_active            # <class 'bool'> 
+bool             little_fault           # <class 'bool'> 
+bool             little_gripping        # <class 'bool'> 
+bool             little_at_open         # <class 'bool'> 
+bool             little_at_posn         # <class 'bool'> 
+bool             little_touch           # <class 'bool'> 
+bool             little_stall           # <class 'bool'> 
+bool             little_stopped         # <class 'bool'> 
+bool             little_active          # <class 'bool'> 
+bool             rotate_fault           # <class 'bool'> 
+bool             rotate_gripping        # <class 'bool'> 
+bool             rotate_at_open         # <class 'bool'> 
+bool             rotate_at_posn         # <class 'bool'> 
+bool             rotate_touch           # <class 'bool'> 
+bool             rotate_stall           # <class 'bool'> 
+bool             rotate_stopped         # <class 'bool'> 
+bool             rotate_active          # <class 'bool'> 
+# Copyright © 2024 Covvi

@@ -1,0 +1,177 @@
+cmake_minimum_required(VERSION 3.8)
+project(covvi_interfaces)
+
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 14)
+endif()
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+# uncomment the following section in order to fill in
+# further dependencies manually.
+# find_package(<dependency> REQUIRED)
+
+find_package(rosidl_default_generators REQUIRED)
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/DigitMoveMessageID.msg"
+  "msg/BulkResponseMsg.msg"
+  "msg/ElectrodeValue.msg"
+  "msg/FirmwareFramMsg.msg"
+  "msg/DigitStatusMsg.msg"
+  "msg/EnvironmentalMsg.msg"
+  "msg/HandFirmwarePicMsg.msg"
+  "msg/DigitTouchAllMsg.msg"
+  "msg/DiscoveryMsg.msg"
+  "msg/GripName.msg"
+  "msg/DeviceIdentityMsg.msg"
+  "msg/HandPowerMsg.msg"
+  "msg/Digit.msg"
+  "msg/DeviceInfoMsg.msg"
+  "msg/DigitStatusAllMsg.msg"
+  "msg/GripNameIndex.msg"
+  "msg/Command.msg"
+  "msg/Language.msg"
+  "msg/SystemStatusMsg.msg"
+  "msg/DigitStatusMessageID.msg"
+  "msg/DeviceClass.msg"
+  "msg/BulkMsg.msg"
+  "msg/BaseIntEnum.msg"
+  "msg/DeviceClassType.msg"
+  "msg/DigitPosnMsg.msg"
+  "msg/DigitErrorMessageID.msg"
+  "msg/UserGripID.msg"
+  "msg/DeviceGlove.msg"
+  "msg/CurrentGripMsg.msg"
+  "msg/FirmwareMaxMsg.msg"
+  "msg/UserGripResMsg.msg"
+  "msg/RealtimeCfg2Msg.msg"
+  "msg/UpdateStatus.msg"
+  "msg/DiscoveryBaseMsg.msg"
+  "msg/BaseStrEnum.msg"
+  "msg/BaseMessageID.msg"
+  "msg/CurrentGripTableMsg.msg"
+  "msg/TableIndex.msg"
+  "msg/BaseMessage.msg"
+  "msg/ProductString.msg"
+  "msg/CurrentGripGripIdMsg.msg"
+  "msg/ElectrodeValueMsg.msg"
+  "msg/DigitPosnAllMsg.msg"
+  "msg/RealtimeCfg.msg"
+  "msg/SixOctetAddress.msg"
+  "msg/UploadDownLoadMsg.msg"
+  "msg/CurrentGrip.msg"
+  "msg/InputStatusMsg.msg"
+  "msg/FirmwareBleMsg.msg"
+  "msg/MotorCurrentAllMsg.msg"
+  "msg/MotorCurrentMsg.msg"
+  "msg/DiscoveryRequestMsg.msg"
+  "msg/BaseControlMsg.msg"
+  "msg/DigitMoveMsg.msg"
+  "msg/RealtimeCfgMsg.msg"
+  "msg/MotorCurrentMessageID.msg"
+  "msg/MotorLimitsMsg.msg"
+  "msg/ControlMsg.msg"
+  "msg/DigitPosnSetMsg.msg"
+  "msg/ProductID.msg"
+  "msg/Digit5.msg"
+  "msg/GripNameMessageID.msg"
+  "msg/PinchConfigMsg.msg"
+  "msg/BasePrimitive.msg"
+  "msg/EciFirmwarePicMsg.msg"
+  "msg/CurrentGripID.msg"
+  "msg/BuiltinGripID.msg"
+  "msg/FirmwarePicMsg.msg"
+  "msg/Percentage.msg"
+  "msg/Table.msg"
+  "msg/RealtimeMsg.msg"
+  "msg/DiscoveryConfigMsg.msg"
+  "msg/FirmwareMessageID.msg"
+  "msg/DeviceInputType.msg"
+  "msg/FirmwareMsg.msg"
+  "msg/GripNameMsg.msg"
+  "msg/CommandString.msg"
+  "msg/BulkRequestMsg.msg"
+  "msg/Hostname.msg"
+  "msg/DeviceProductMsg.msg"
+  "msg/DigitErrorMsg.msg"
+  "msg/MessageID.msg"
+  "msg/ElectrodeValueMessageID.msg"
+  "msg/UserGripCmdMsg.msg"
+  "msg/Firmware.msg"
+  "msg/DigitConfigMessageID.msg"
+  "msg/HelloMsg.msg"
+  "msg/RemoveUserGripCmdMsg.msg"
+  "msg/DirectControlMsg.msg"
+  "msg/DeviceOutputType.msg"
+  "msg/DigitConfigMsg.msg"
+  "msg/SendUserGripCmdMsg.msg"
+  "msg/DigitPosnMessageID.msg"
+  "msg/FourOctetAddress.msg"
+  "msg/DeviceTestType.msg"
+  "msg/CommandCode.msg"
+  "msg/OrientationMsg.msg"
+  "msg/DirectControlCommand.msg"
+  "msg/UserGripMsg.msg"
+  "msg/NetDevice.msg"
+  "msg/Product.msg"
+  "msg/FirmwareFpgaMsg.msg"
+  "msg/DiscoveryResponseMsg.msg"
+  "msg/BulkDataType.msg"
+  "msg/DeviceHandType.msg"
+  "msg/DeviceColour.msg"
+  "srv/SetDigitMove.srv"
+  "srv/GetCurrentGrip.srv"
+  "srv/SetHandPowerOn.srv"
+  "srv/GetDigitError.srv"
+  "srv/GetDeviceIdentity.srv"
+  "srv/SetDigitPosn.srv"
+  "srv/GetEnvironmental.srv"
+  "srv/GetDigitPosnAll.srv"
+  "srv/SetCurrentGrip.srv"
+  "srv/SendUserGrip.srv"
+  "srv/GetSystemStatus.srv"
+  "srv/RemoveUserGrip.srv"
+  "srv/GetOrientation.srv"
+  "srv/GetMotorLimits.srv"
+  "srv/SetDigitPosnStop.srv"
+  "srv/GetFirmwarePICHAND.srv"
+  "srv/SetRealtimeCfg.srv"
+  "srv/GetDigitStatus.srv"
+  "srv/ResetUserGrips.srv"
+  "srv/GetHello.srv"
+  "srv/DisableAllRealtimeCfg.srv"
+  "srv/GetDigitStatusAll.srv"
+  "srv/GetPinchConfig.srv"
+  "srv/GetDigitConfig.srv"
+  "srv/SetDirectControlOpen.srv"
+  "srv/GetDeviceProduct.srv"
+  "srv/GetDigitPosn.srv"
+  "srv/GetMotorCurrentAll.srv"
+  "srv/SetDirectControlStop.srv"
+  "srv/EnableAllRealtimeCfg.srv"
+  "srv/GetMotorCurrent.srv"
+  "srv/SetDirectControlClose.srv"
+  "srv/GetFirmwarePICECI.srv"
+  "srv/ResetRealtimeCfg.srv"
+  "srv/GetGripName.srv"
+  "srv/SetHandPowerOff.srv"
+
+)
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  # the following line skips the linter which checks for copyrights
+  # comment the line when a copyright and license is added to all source files
+  set(ament_cmake_copyright_FOUND TRUE)
+  # the following line skips cpplint (only works in a git repo)
+  # comment the line when this package is in a git repo and when
+  # a copyright and license is added to all source files
+  set(ament_cmake_cpplint_FOUND TRUE)
+  ament_lint_auto_find_test_dependencies()
+endif()
+
+ament_export_dependencies(rosidl_default_runtime)
+ament_package()

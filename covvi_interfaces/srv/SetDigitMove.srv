@@ -1,0 +1,8 @@
+Digit            digit           
+uint8            position        
+Percentage       speed           
+Percentage       power           
+Percentage       limit           
+---
+DigitMoveMsg result
+# Copyright © 2024 Covvi
