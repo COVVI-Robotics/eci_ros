@@ -11,4 +11,4 @@ bool             electrode_value        # <class 'bool'>
 bool             current_grip           # <class 'bool'> 
 bool             digit_posn             # <class 'bool'> 
 bool             digit_status           # <class 'bool'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

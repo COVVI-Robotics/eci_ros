@@ -19,4 +19,4 @@ uint8 GN3         = 18
 uint8 GN4         = 19
 uint8 GN5         = 20
 uint8 value
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

@@ -9,9 +9,9 @@ from covvi_hand_driver.covvi_base_client_node import CovviBaseClientNode
 
 
 class InputStatusMsgSubscriberNode(CovviBaseClientNode):
-    def __init__(self, callback: Callable | None = None, service: str = '', node_name: str = 'covvi_input_status_msg_subscriber_node', **kwargs):
-        super().__init__(service=service, node_name=node_name, **kwargs)
-        full_publisher_name_InputStatusMsg = self._get_full_ros2_name('InputStatusMsg', service=service)
+    def __init__(self, callback: Callable | None = None, service: str = '', **kwargs):
+        super().__init__(service=service, **kwargs)
+        full_publisher_name_InputStatusMsg = f'{self.get_namespace()}/{service}/InputStatusMsg'
         self.get_logger().info(f'Creating ROS2 Subscriber: {full_publisher_name_InputStatusMsg}')
         self.subscriber_InputStatusMsg = self.create_subscription(
             covvi_interfaces.msg.InputStatusMsg,
@@ -25,9 +25,9 @@ class InputStatusMsgSubscriberNode(CovviBaseClientNode):
 def main(args: Iterable[Any] | None = None) -> None:
     _, service, *_ = sys.argv
     rclpy.init(args=args)
-    covvi_input_status_msg_subscriber_node = InputStatusMsgSubscriberNode(service=service)
-    rclpy.spin(covvi_input_status_msg_subscriber_node)
-    covvi_input_status_msg_subscriber_node.destroy_node()
+    node = InputStatusMsgSubscriberNode(service=service)
+    rclpy.spin(node)
+    node.destroy_node()
     rclpy.shutdown()
 
 

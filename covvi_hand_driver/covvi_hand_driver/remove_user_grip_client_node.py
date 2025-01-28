@@ -10,9 +10,9 @@ from covvi_hand_driver.covvi_base_client_node import CovviBaseClientNode, public
 
 
 class RemoveUserGripClientNode(CovviBaseClientNode):
-    def __init__(self, service: str = '', node_name: str = 'covvi_remove_user_grip_client_node', **kwargs):
-        super().__init__(service=service, node_name=node_name, **kwargs)
-        full_service_name_RemoveUserGrip = self._get_full_ros2_name('RemoveUserGrip', service=service)
+    def __init__(self, service: str = '', **kwargs):
+        super().__init__(service=service, **kwargs)
+        full_service_name_RemoveUserGrip = f'{self.get_namespace()}/{service}/RemoveUserGrip'
         self.get_logger().info(f'Creating ROS2 Client:   {full_service_name_RemoveUserGrip}')
         self.client_RemoveUserGrip = self.create_client(
             covvi_interfaces.srv.RemoveUserGrip,
@@ -43,9 +43,9 @@ class RemoveUserGripClientNode(CovviBaseClientNode):
 def main(args: Iterable[Any] | None = None) -> None:
     _, service, *_ = sys.argv
     rclpy.init(args=args)
-    covvi_remove_user_grip_client_node = RemoveUserGripClientNode(service=service)
-    rclpy.spin(covvi_remove_user_grip_client_node)
-    covvi_remove_user_grip_client_node.destroy_node()
+    node = RemoveUserGripClientNode(service=service)
+    rclpy.spin(node)
+    node.destroy_node()
     rclpy.shutdown()
 
 

@@ -9,4 +9,4 @@ uint8            middle_pos             # <class 'int'>
 uint8            ring_pos               # <class 'int'> 
 uint8            little_pos             # <class 'int'> 
 uint8            rotate_pos             # <class 'int'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

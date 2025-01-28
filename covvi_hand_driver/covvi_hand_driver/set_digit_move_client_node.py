@@ -10,9 +10,9 @@ from covvi_hand_driver.covvi_base_client_node import CovviBaseClientNode, public
 
 
 class SetDigitMoveClientNode(CovviBaseClientNode):
-    def __init__(self, service: str = '', node_name: str = 'covvi_set_digit_move_client_node', **kwargs):
-        super().__init__(service=service, node_name=node_name, **kwargs)
-        full_service_name_SetDigitMove = self._get_full_ros2_name('SetDigitMove', service=service)
+    def __init__(self, service: str = '', **kwargs):
+        super().__init__(service=service, **kwargs)
+        full_service_name_SetDigitMove = f'{self.get_namespace()}/{service}/SetDigitMove'
         self.get_logger().info(f'Creating ROS2 Client:   {full_service_name_SetDigitMove}')
         self.client_SetDigitMove = self.create_client(
             covvi_interfaces.srv.SetDigitMove,
@@ -27,7 +27,7 @@ class SetDigitMoveClientNode(CovviBaseClientNode):
     def setDigitMove(self,
         digit:    covvi_interfaces.msg.Digit,
         position: int,
-        speed:    covvi_interfaces.msg.Percentage,
+        speed:    covvi_interfaces.msg.Speed,
         power:    covvi_interfaces.msg.Percentage,
         limit:    covvi_interfaces.msg.Percentage,
     ) -> covvi_interfaces.msg.DigitMoveMsg:
@@ -51,9 +51,9 @@ class SetDigitMoveClientNode(CovviBaseClientNode):
 def main(args: Iterable[Any] | None = None) -> None:
     _, service, *_ = sys.argv
     rclpy.init(args=args)
-    covvi_set_digit_move_client_node = SetDigitMoveClientNode(service=service)
-    rclpy.spin(covvi_set_digit_move_client_node)
-    covvi_set_digit_move_client_node.destroy_node()
+    node = SetDigitMoveClientNode(service=service)
+    rclpy.spin(node)
+    node.destroy_node()
     rclpy.shutdown()
 
 

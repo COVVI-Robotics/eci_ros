@@ -11,4 +11,4 @@ bool             ring_tip               # <class 'bool'>
 bool             middle_tip             # <class 'bool'> 
 bool             index_tip              # <class 'bool'> 
 bool             thumb_tip              # <class 'bool'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

@@ -8,4 +8,4 @@ uint8            index_current          # <class 'int'>
 uint8            middle_current         # <class 'int'> 
 uint8            ring_current           # <class 'int'> 
 uint8            little_current         # <class 'int'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

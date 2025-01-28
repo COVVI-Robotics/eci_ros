@@ -6,4 +6,4 @@ uint8            data_len               # <class 'int'>
 BulkDataType     data_type              # <enum 'BulkDataType'> GRIP
 GripNameIndex    grip_name_index        # <enum 'GripNameIndex'> 
 UpdateStatus     update_status          # <enum 'UpdateStatus'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

@@ -13,4 +13,4 @@ uint8 TAP         = 12
 uint8 GRAB        = 13
 uint8 TRIPOD_OPEN = 14
 uint8 value
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

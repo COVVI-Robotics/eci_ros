@@ -4,4 +4,4 @@ Command          cmd_type               # <class 'eci.primitives.command.Command
 MessageID        msg_id                 # <enum 'MessageID'> caElectrodeValue
 uint8            data_len               # <class 'int'> 
 int16            voltage                # <class 'eci.primitives.dtypes.Int16'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

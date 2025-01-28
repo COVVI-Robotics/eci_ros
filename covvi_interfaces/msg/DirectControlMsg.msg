@@ -4,5 +4,5 @@ Command          cmd_type               # <class 'eci.primitives.command.Command
 MessageID        msg_id                 # <enum 'MessageID'> caDirectControl
 uint8            data_len               # <class 'int'> 
 uint8            command                # <class 'int'> 
-Percentage       speed                  # <class 'eci.primitives.percentage.Percentage'> 0
-# Copyright © 2024 Covvi
+Speed            speed                  # <class 'eci.primitives.speed.Speed'> 15
+# Copyright © 2024 COVVI

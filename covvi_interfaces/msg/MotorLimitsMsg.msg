@@ -15,4 +15,4 @@ uint8            index_derate_value     # <class 'int'>
 uint8            middle_derate_value    # <class 'int'> 
 uint8            ring_derate_value      # <class 'int'> 
 uint8            little_derate_value    # <class 'int'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

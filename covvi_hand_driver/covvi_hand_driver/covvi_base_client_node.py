@@ -9,9 +9,9 @@ def public(func: Callable) -> Callable:
 
 
 class CovviBaseClientNode(CovviBaseNode):
-    def __init__(self, service: str = '', node_name: str = 'covvi_base_client_node', **kwargs):
+    def __init__(self, service: str = '', **kwargs):
         assert service
-        super().__init__(node_name=node_name, **kwargs)
+        super().__init__(**kwargs)
         self.eci_service = service
         self.get_logger().info(f'Service: {service}')
         assert service

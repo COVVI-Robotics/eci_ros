@@ -6,4 +6,4 @@ uint8            data_len               # <class 'int'>
 uint8            revision               # <class 'int'> 
 uint8            major                  # <class 'int'> 
 uint8            minor                  # <class 'int'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

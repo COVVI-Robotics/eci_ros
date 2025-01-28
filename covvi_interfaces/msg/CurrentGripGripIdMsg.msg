@@ -4,4 +4,4 @@ Command          cmd_type               # <class 'eci.primitives.command.Command
 MessageID        msg_id                 # <enum 'MessageID'> caCurrentGrip
 uint8            data_len               # <class 'int'> 1
 CurrentGripID    grip_id                # <enum 'CurrentGripID'> TRIPOD_OPEN
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

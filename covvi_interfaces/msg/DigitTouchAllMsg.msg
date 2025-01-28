@@ -8,4 +8,4 @@ uint8            index_touch            # <class 'int'>
 uint8            middle_touch           # <class 'int'> 
 uint8            ring_touch             # <class 'int'> 
 uint8            little_touch           # <class 'int'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

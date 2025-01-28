@@ -10,4 +10,4 @@ uint8 GLIDE     = 49
 uint8 ADAPT     = 50
 uint8 ROS       = 65
 uint8 value
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

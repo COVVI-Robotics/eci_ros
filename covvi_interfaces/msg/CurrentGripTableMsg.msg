@@ -5,4 +5,4 @@ MessageID        msg_id                 # <enum 'MessageID'> caCurrentGrip
 uint8            data_len               # <class 'int'> 2
 Table            table                  # <enum 'Table'> 
 TableIndex       table_index            # <enum 'TableIndex'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

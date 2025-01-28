@@ -10,9 +10,9 @@ from covvi_hand_driver.covvi_base_client_node import CovviBaseClientNode, public
 
 
 class DisableAllRealtimeCfgClientNode(CovviBaseClientNode):
-    def __init__(self, service: str = '', node_name: str = 'covvi_disable_all_realtime_cfg_client_node', **kwargs):
-        super().__init__(service=service, node_name=node_name, **kwargs)
-        full_service_name_DisableAllRealtimeCfg = self._get_full_ros2_name('DisableAllRealtimeCfg', service=service)
+    def __init__(self, service: str = '', **kwargs):
+        super().__init__(service=service, **kwargs)
+        full_service_name_DisableAllRealtimeCfg = f'{self.get_namespace()}/{service}/DisableAllRealtimeCfg'
         self.get_logger().info(f'Creating ROS2 Client:   {full_service_name_DisableAllRealtimeCfg}')
         self.client_DisableAllRealtimeCfg = self.create_client(
             covvi_interfaces.srv.DisableAllRealtimeCfg,
@@ -40,9 +40,9 @@ class DisableAllRealtimeCfgClientNode(CovviBaseClientNode):
 def main(args: Iterable[Any] | None = None) -> None:
     _, service, *_ = sys.argv
     rclpy.init(args=args)
-    covvi_disable_all_realtime_cfg_client_node = DisableAllRealtimeCfgClientNode(service=service)
-    rclpy.spin(covvi_disable_all_realtime_cfg_client_node)
-    covvi_disable_all_realtime_cfg_client_node.destroy_node()
+    node = DisableAllRealtimeCfgClientNode(service=service)
+    rclpy.spin(node)
+    node.destroy_node()
     rclpy.shutdown()
 
 

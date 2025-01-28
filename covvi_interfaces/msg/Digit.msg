@@ -5,4 +5,4 @@ uint8 RING           = 3
 uint8 LITTLE         = 4
 uint8 THUMB_ROTATION = 5
 uint8 value
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

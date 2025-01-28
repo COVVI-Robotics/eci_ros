@@ -5,4 +5,4 @@ uint8 FRENCH  = 3
 uint8 ITALIAN = 4
 uint8 DUTCH   = 5
 uint8 value
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

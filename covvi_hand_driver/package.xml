@@ -2,8 +2,8 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>covvi_hand_driver</name>
-  <version>1.1.4</version>
-  <description>A package to store service and message definitions for the Covvi Hand Driver</description>
+  <version>1.1.5</version>
+  <description>A package to store service and message definitions for the COVVI Hand Driver</description>
   <maintainer email="jordan.birdsall@covvi.com">Jordan Birdsall</maintainer>
   <license>Apache-2.0</license>
 

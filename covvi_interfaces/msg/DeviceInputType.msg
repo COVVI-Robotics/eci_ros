@@ -5,4 +5,4 @@ uint8 ROS   = 4
 uint8 RCI   = 5
 uint8 ECI   = 6
 uint8 value
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

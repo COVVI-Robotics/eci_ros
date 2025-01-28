@@ -13,4 +13,4 @@ uint8            year_of_manufacture    # <class 'int'>
 uint8            extended_warranty      # <class 'int'> 
 uint8            warranty_expires_month # <class 'int'> 
 uint8            warranty_expires_year  # <class 'int'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

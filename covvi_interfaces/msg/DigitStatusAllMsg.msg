@@ -51,4 +51,4 @@ bool             rotate_touch           # <class 'bool'>
 bool             rotate_stall           # <class 'bool'> 
 bool             rotate_stopped         # <class 'bool'> 
 bool             rotate_active          # <class 'bool'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

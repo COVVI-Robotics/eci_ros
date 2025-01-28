@@ -9,9 +9,9 @@ from covvi_hand_driver.covvi_base_client_node import CovviBaseClientNode
 
 
 class MotorCurrentAllMsgSubscriberNode(CovviBaseClientNode):
-    def __init__(self, callback: Callable | None = None, service: str = '', node_name: str = 'covvi_motor_current_all_msg_subscriber_node', **kwargs):
-        super().__init__(service=service, node_name=node_name, **kwargs)
-        full_publisher_name_MotorCurrentAllMsg = self._get_full_ros2_name('MotorCurrentAllMsg', service=service)
+    def __init__(self, callback: Callable | None = None, service: str = '', **kwargs):
+        super().__init__(service=service, **kwargs)
+        full_publisher_name_MotorCurrentAllMsg = f'{self.get_namespace()}/{service}/MotorCurrentAllMsg'
         self.get_logger().info(f'Creating ROS2 Subscriber: {full_publisher_name_MotorCurrentAllMsg}')
         self.subscriber_MotorCurrentAllMsg = self.create_subscription(
             covvi_interfaces.msg.MotorCurrentAllMsg,
@@ -25,9 +25,9 @@ class MotorCurrentAllMsgSubscriberNode(CovviBaseClientNode):
 def main(args: Iterable[Any] | None = None) -> None:
     _, service, *_ = sys.argv
     rclpy.init(args=args)
-    covvi_motor_current_all_msg_subscriber_node = MotorCurrentAllMsgSubscriberNode(service=service)
-    rclpy.spin(covvi_motor_current_all_msg_subscriber_node)
-    covvi_motor_current_all_msg_subscriber_node.destroy_node()
+    node = MotorCurrentAllMsgSubscriberNode(service=service)
+    rclpy.spin(node)
+    node.destroy_node()
     rclpy.shutdown()
 
 

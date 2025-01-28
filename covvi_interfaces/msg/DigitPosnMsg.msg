@@ -4,4 +4,4 @@ Command          cmd_type               # <class 'eci.primitives.command.Command
 MessageID        msg_id                 # <enum 'MessageID'> caDigitPosn
 uint8            data_len               # <class 'int'> 
 uint8            pos                    # <class 'int'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

@@ -6,4 +6,4 @@ uint8            data_len               # <class 'int'>
 CurrentGripID    grip_id                # <enum 'CurrentGripID'> TRIPOD_OPEN
 Table            table                  # <enum 'Table'> 
 TableIndex       table_index            # <enum 'TableIndex'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

@@ -12,4 +12,4 @@ uint8            ch4                    # <class 'int'>
 uint8            ch5                    # <class 'int'> 
 uint8            ch6                    # <class 'int'> 
 uint8            ch7                    # <class 'int'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

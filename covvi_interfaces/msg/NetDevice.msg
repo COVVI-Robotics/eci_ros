@@ -17,4 +17,4 @@ uint8 DF    = 15
 uint8 LOCAL = 0
 uint8 HAND  = 1
 uint8 value
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

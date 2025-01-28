@@ -10,9 +10,9 @@ from covvi_hand_driver.covvi_base_client_node import CovviBaseClientNode, public
 
 
 class GetFirmwarePICHANDClientNode(CovviBaseClientNode):
-    def __init__(self, service: str = '', node_name: str = 'covvi_get_firmware_p_i_c_h_a_n_d_client_node', **kwargs):
-        super().__init__(service=service, node_name=node_name, **kwargs)
-        full_service_name_GetFirmwarePICHAND = self._get_full_ros2_name('GetFirmwarePICHAND', service=service)
+    def __init__(self, service: str = '', **kwargs):
+        super().__init__(service=service, **kwargs)
+        full_service_name_GetFirmwarePICHAND = f'{self.get_namespace()}/{service}/GetFirmwarePICHAND'
         self.get_logger().info(f'Creating ROS2 Client:   {full_service_name_GetFirmwarePICHAND}')
         self.client_GetFirmwarePICHAND = self.create_client(
             covvi_interfaces.srv.GetFirmwarePICHAND,
@@ -40,9 +40,9 @@ class GetFirmwarePICHANDClientNode(CovviBaseClientNode):
 def main(args: Iterable[Any] | None = None) -> None:
     _, service, *_ = sys.argv
     rclpy.init(args=args)
-    covvi_get_firmware_p_i_c_h_a_n_d_client_node = GetFirmwarePICHANDClientNode(service=service)
-    rclpy.spin(covvi_get_firmware_p_i_c_h_a_n_d_client_node)
-    covvi_get_firmware_p_i_c_h_a_n_d_client_node.destroy_node()
+    node = GetFirmwarePICHANDClientNode(service=service)
+    rclpy.spin(node)
+    node.destroy_node()
     rclpy.shutdown()
 
 

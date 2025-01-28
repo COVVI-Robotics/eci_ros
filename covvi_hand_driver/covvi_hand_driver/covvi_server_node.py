@@ -14,191 +14,261 @@ from eci import CovviInterface, FourOctetAddress
 
 
 class CovviServerNode(CovviBaseNode):
-    def __init__(self, host: FourOctetAddress | str = '', node_name: str = 'covvi_server_node', **kwargs):
+    def __init__(self, host: FourOctetAddress | str = '', **kwargs):
         assert host
-        super().__init__(node_name=node_name, **kwargs)
+        super().__init__(**kwargs)
         self.host = FourOctetAddress(host)
         self.get_logger().info(f'Host: {host}')
         self.eci = CovviInterface(host)
 
         self.get_logger().info(f'Creating ROS2 Services')
 
-        full_service_name_DisableAllRealtimeCfg = self._get_full_ros2_name('DisableAllRealtimeCfg')
+        full_service_name_DisableAllRealtimeCfg = f'{self.get_namespace()}/{self.get_name()}/DisableAllRealtimeCfg'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_DisableAllRealtimeCfg}')
         self.service_DisableAllRealtimeCfg = self.create_service(covvi_interfaces.srv.DisableAllRealtimeCfg, full_service_name_DisableAllRealtimeCfg, self.serviceCallbackDisableAllRealtimeCfg)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_DisableAllRealtimeCfg}')
 
-        full_service_name_EnableAllRealtimeCfg = self._get_full_ros2_name('EnableAllRealtimeCfg')
+        full_service_name_EnableAllRealtimeCfg = f'{self.get_namespace()}/{self.get_name()}/EnableAllRealtimeCfg'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_EnableAllRealtimeCfg}')
         self.service_EnableAllRealtimeCfg = self.create_service(covvi_interfaces.srv.EnableAllRealtimeCfg, full_service_name_EnableAllRealtimeCfg, self.serviceCallbackEnableAllRealtimeCfg)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_EnableAllRealtimeCfg}')
 
-        full_service_name_GetCurrentGrip = self._get_full_ros2_name('GetCurrentGrip')
+        full_service_name_GetCurrentGrip = f'{self.get_namespace()}/{self.get_name()}/GetCurrentGrip'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetCurrentGrip}')
         self.service_GetCurrentGrip = self.create_service(covvi_interfaces.srv.GetCurrentGrip, full_service_name_GetCurrentGrip, self.serviceCallbackGetCurrentGrip)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetCurrentGrip}')
 
-        full_service_name_GetDeviceIdentity = self._get_full_ros2_name('GetDeviceIdentity')
+        full_service_name_GetDeviceIdentity = f'{self.get_namespace()}/{self.get_name()}/GetDeviceIdentity'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetDeviceIdentity}')
         self.service_GetDeviceIdentity = self.create_service(covvi_interfaces.srv.GetDeviceIdentity, full_service_name_GetDeviceIdentity, self.serviceCallbackGetDeviceIdentity)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetDeviceIdentity}')
 
-        full_service_name_GetDeviceProduct = self._get_full_ros2_name('GetDeviceProduct')
+        full_service_name_GetDeviceProduct = f'{self.get_namespace()}/{self.get_name()}/GetDeviceProduct'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetDeviceProduct}')
         self.service_GetDeviceProduct = self.create_service(covvi_interfaces.srv.GetDeviceProduct, full_service_name_GetDeviceProduct, self.serviceCallbackGetDeviceProduct)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetDeviceProduct}')
 
-        full_service_name_GetDigitConfig = self._get_full_ros2_name('GetDigitConfig')
+        full_service_name_GetDigitConfig = f'{self.get_namespace()}/{self.get_name()}/GetDigitConfig'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetDigitConfig}')
         self.service_GetDigitConfig = self.create_service(covvi_interfaces.srv.GetDigitConfig, full_service_name_GetDigitConfig, self.serviceCallbackGetDigitConfig)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetDigitConfig}')
 
-        full_service_name_GetDigitError = self._get_full_ros2_name('GetDigitError')
+        full_service_name_GetDigitError = f'{self.get_namespace()}/{self.get_name()}/GetDigitError'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetDigitError}')
         self.service_GetDigitError = self.create_service(covvi_interfaces.srv.GetDigitError, full_service_name_GetDigitError, self.serviceCallbackGetDigitError)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetDigitError}')
 
-        full_service_name_GetDigitPosn = self._get_full_ros2_name('GetDigitPosn')
+        full_service_name_GetDigitPosn = f'{self.get_namespace()}/{self.get_name()}/GetDigitPosn'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetDigitPosn}')
         self.service_GetDigitPosn = self.create_service(covvi_interfaces.srv.GetDigitPosn, full_service_name_GetDigitPosn, self.serviceCallbackGetDigitPosn)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetDigitPosn}')
 
-        full_service_name_GetDigitPosnAll = self._get_full_ros2_name('GetDigitPosnAll')
+        full_service_name_GetDigitPosnAll = f'{self.get_namespace()}/{self.get_name()}/GetDigitPosnAll'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetDigitPosnAll}')
         self.service_GetDigitPosnAll = self.create_service(covvi_interfaces.srv.GetDigitPosnAll, full_service_name_GetDigitPosnAll, self.serviceCallbackGetDigitPosnAll)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetDigitPosnAll}')
 
-        full_service_name_GetDigitStatus = self._get_full_ros2_name('GetDigitStatus')
+        full_service_name_GetDigitStatus = f'{self.get_namespace()}/{self.get_name()}/GetDigitStatus'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetDigitStatus}')
         self.service_GetDigitStatus = self.create_service(covvi_interfaces.srv.GetDigitStatus, full_service_name_GetDigitStatus, self.serviceCallbackGetDigitStatus)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetDigitStatus}')
 
-        full_service_name_GetDigitStatusAll = self._get_full_ros2_name('GetDigitStatusAll')
+        full_service_name_GetDigitStatusAll = f'{self.get_namespace()}/{self.get_name()}/GetDigitStatusAll'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetDigitStatusAll}')
         self.service_GetDigitStatusAll = self.create_service(covvi_interfaces.srv.GetDigitStatusAll, full_service_name_GetDigitStatusAll, self.serviceCallbackGetDigitStatusAll)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetDigitStatusAll}')
 
-        full_service_name_GetEnvironmental = self._get_full_ros2_name('GetEnvironmental')
+        full_service_name_GetEciConnected = f'{self.get_namespace()}/{self.get_name()}/GetEciConnected'
+        self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetEciConnected}')
+        self.service_GetEciConnected = self.create_service(covvi_interfaces.srv.GetEciConnected, full_service_name_GetEciConnected, self.serviceCallbackGetEciConnected)
+        self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetEciConnected}')
+
+        full_service_name_GetEciDeviceClassType = f'{self.get_namespace()}/{self.get_name()}/GetEciDeviceClassType'
+        self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetEciDeviceClassType}')
+        self.service_GetEciDeviceClassType = self.create_service(covvi_interfaces.srv.GetEciDeviceClassType, full_service_name_GetEciDeviceClassType, self.serviceCallbackGetEciDeviceClassType)
+        self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetEciDeviceClassType}')
+
+        full_service_name_GetEciError = f'{self.get_namespace()}/{self.get_name()}/GetEciError'
+        self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetEciError}')
+        self.service_GetEciError = self.create_service(covvi_interfaces.srv.GetEciError, full_service_name_GetEciError, self.serviceCallbackGetEciError)
+        self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetEciError}')
+
+        full_service_name_GetEciManufacturerID = f'{self.get_namespace()}/{self.get_name()}/GetEciManufacturerID'
+        self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetEciManufacturerID}')
+        self.service_GetEciManufacturerID = self.create_service(covvi_interfaces.srv.GetEciManufacturerID, full_service_name_GetEciManufacturerID, self.serviceCallbackGetEciManufacturerID)
+        self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetEciManufacturerID}')
+
+        full_service_name_GetEciPowerOn = f'{self.get_namespace()}/{self.get_name()}/GetEciPowerOn'
+        self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetEciPowerOn}')
+        self.service_GetEciPowerOn = self.create_service(covvi_interfaces.srv.GetEciPowerOn, full_service_name_GetEciPowerOn, self.serviceCallbackGetEciPowerOn)
+        self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetEciPowerOn}')
+
+        full_service_name_GetEciProductID = f'{self.get_namespace()}/{self.get_name()}/GetEciProductID'
+        self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetEciProductID}')
+        self.service_GetEciProductID = self.create_service(covvi_interfaces.srv.GetEciProductID, full_service_name_GetEciProductID, self.serviceCallbackGetEciProductID)
+        self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetEciProductID}')
+
+        full_service_name_GetEciSerialNumber = f'{self.get_namespace()}/{self.get_name()}/GetEciSerialNumber'
+        self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetEciSerialNumber}')
+        self.service_GetEciSerialNumber = self.create_service(covvi_interfaces.srv.GetEciSerialNumber, full_service_name_GetEciSerialNumber, self.serviceCallbackGetEciSerialNumber)
+        self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetEciSerialNumber}')
+
+        full_service_name_GetEnvironmental = f'{self.get_namespace()}/{self.get_name()}/GetEnvironmental'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetEnvironmental}')
         self.service_GetEnvironmental = self.create_service(covvi_interfaces.srv.GetEnvironmental, full_service_name_GetEnvironmental, self.serviceCallbackGetEnvironmental)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetEnvironmental}')
 
-        full_service_name_GetFirmwarePICECI = self._get_full_ros2_name('GetFirmwarePICECI')
+        full_service_name_GetFirmwarePICECI = f'{self.get_namespace()}/{self.get_name()}/GetFirmwarePICECI'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetFirmwarePICECI}')
         self.service_GetFirmwarePICECI = self.create_service(covvi_interfaces.srv.GetFirmwarePICECI, full_service_name_GetFirmwarePICECI, self.serviceCallbackGetFirmwarePICECI)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetFirmwarePICECI}')
 
-        full_service_name_GetFirmwarePICHAND = self._get_full_ros2_name('GetFirmwarePICHAND')
+        full_service_name_GetFirmwarePICHAND = f'{self.get_namespace()}/{self.get_name()}/GetFirmwarePICHAND'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetFirmwarePICHAND}')
         self.service_GetFirmwarePICHAND = self.create_service(covvi_interfaces.srv.GetFirmwarePICHAND, full_service_name_GetFirmwarePICHAND, self.serviceCallbackGetFirmwarePICHAND)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetFirmwarePICHAND}')
 
-        full_service_name_GetGripName = self._get_full_ros2_name('GetGripName')
+        full_service_name_GetGripName = f'{self.get_namespace()}/{self.get_name()}/GetGripName'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetGripName}')
         self.service_GetGripName = self.create_service(covvi_interfaces.srv.GetGripName, full_service_name_GetGripName, self.serviceCallbackGetGripName)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetGripName}')
 
-        full_service_name_GetHello = self._get_full_ros2_name('GetHello')
+        full_service_name_GetHandConnected = f'{self.get_namespace()}/{self.get_name()}/GetHandConnected'
+        self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetHandConnected}')
+        self.service_GetHandConnected = self.create_service(covvi_interfaces.srv.GetHandConnected, full_service_name_GetHandConnected, self.serviceCallbackGetHandConnected)
+        self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetHandConnected}')
+
+        full_service_name_GetHandDeviceClassType = f'{self.get_namespace()}/{self.get_name()}/GetHandDeviceClassType'
+        self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetHandDeviceClassType}')
+        self.service_GetHandDeviceClassType = self.create_service(covvi_interfaces.srv.GetHandDeviceClassType, full_service_name_GetHandDeviceClassType, self.serviceCallbackGetHandDeviceClassType)
+        self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetHandDeviceClassType}')
+
+        full_service_name_GetHandError = f'{self.get_namespace()}/{self.get_name()}/GetHandError'
+        self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetHandError}')
+        self.service_GetHandError = self.create_service(covvi_interfaces.srv.GetHandError, full_service_name_GetHandError, self.serviceCallbackGetHandError)
+        self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetHandError}')
+
+        full_service_name_GetHandManufacturerID = f'{self.get_namespace()}/{self.get_name()}/GetHandManufacturerID'
+        self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetHandManufacturerID}')
+        self.service_GetHandManufacturerID = self.create_service(covvi_interfaces.srv.GetHandManufacturerID, full_service_name_GetHandManufacturerID, self.serviceCallbackGetHandManufacturerID)
+        self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetHandManufacturerID}')
+
+        full_service_name_GetHandPowerOn = f'{self.get_namespace()}/{self.get_name()}/GetHandPowerOn'
+        self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetHandPowerOn}')
+        self.service_GetHandPowerOn = self.create_service(covvi_interfaces.srv.GetHandPowerOn, full_service_name_GetHandPowerOn, self.serviceCallbackGetHandPowerOn)
+        self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetHandPowerOn}')
+
+        full_service_name_GetHandProductID = f'{self.get_namespace()}/{self.get_name()}/GetHandProductID'
+        self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetHandProductID}')
+        self.service_GetHandProductID = self.create_service(covvi_interfaces.srv.GetHandProductID, full_service_name_GetHandProductID, self.serviceCallbackGetHandProductID)
+        self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetHandProductID}')
+
+        full_service_name_GetHandSerialNumber = f'{self.get_namespace()}/{self.get_name()}/GetHandSerialNumber'
+        self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetHandSerialNumber}')
+        self.service_GetHandSerialNumber = self.create_service(covvi_interfaces.srv.GetHandSerialNumber, full_service_name_GetHandSerialNumber, self.serviceCallbackGetHandSerialNumber)
+        self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetHandSerialNumber}')
+
+        full_service_name_GetHello = f'{self.get_namespace()}/{self.get_name()}/GetHello'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetHello}')
         self.service_GetHello = self.create_service(covvi_interfaces.srv.GetHello, full_service_name_GetHello, self.serviceCallbackGetHello)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetHello}')
 
-        full_service_name_GetMotorCurrent = self._get_full_ros2_name('GetMotorCurrent')
+        full_service_name_GetMotorCurrent = f'{self.get_namespace()}/{self.get_name()}/GetMotorCurrent'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetMotorCurrent}')
         self.service_GetMotorCurrent = self.create_service(covvi_interfaces.srv.GetMotorCurrent, full_service_name_GetMotorCurrent, self.serviceCallbackGetMotorCurrent)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetMotorCurrent}')
 
-        full_service_name_GetMotorCurrentAll = self._get_full_ros2_name('GetMotorCurrentAll')
+        full_service_name_GetMotorCurrentAll = f'{self.get_namespace()}/{self.get_name()}/GetMotorCurrentAll'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetMotorCurrentAll}')
         self.service_GetMotorCurrentAll = self.create_service(covvi_interfaces.srv.GetMotorCurrentAll, full_service_name_GetMotorCurrentAll, self.serviceCallbackGetMotorCurrentAll)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetMotorCurrentAll}')
 
-        full_service_name_GetMotorLimits = self._get_full_ros2_name('GetMotorLimits')
+        full_service_name_GetMotorLimits = f'{self.get_namespace()}/{self.get_name()}/GetMotorLimits'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetMotorLimits}')
         self.service_GetMotorLimits = self.create_service(covvi_interfaces.srv.GetMotorLimits, full_service_name_GetMotorLimits, self.serviceCallbackGetMotorLimits)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetMotorLimits}')
 
-        full_service_name_GetOrientation = self._get_full_ros2_name('GetOrientation')
+        full_service_name_GetOrientation = f'{self.get_namespace()}/{self.get_name()}/GetOrientation'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetOrientation}')
         self.service_GetOrientation = self.create_service(covvi_interfaces.srv.GetOrientation, full_service_name_GetOrientation, self.serviceCallbackGetOrientation)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetOrientation}')
 
-        full_service_name_GetPinchConfig = self._get_full_ros2_name('GetPinchConfig')
+        full_service_name_GetPinchConfig = f'{self.get_namespace()}/{self.get_name()}/GetPinchConfig'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetPinchConfig}')
         self.service_GetPinchConfig = self.create_service(covvi_interfaces.srv.GetPinchConfig, full_service_name_GetPinchConfig, self.serviceCallbackGetPinchConfig)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetPinchConfig}')
 
-        full_service_name_GetSystemStatus = self._get_full_ros2_name('GetSystemStatus')
+        full_service_name_GetSystemStatus = f'{self.get_namespace()}/{self.get_name()}/GetSystemStatus'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_GetSystemStatus}')
         self.service_GetSystemStatus = self.create_service(covvi_interfaces.srv.GetSystemStatus, full_service_name_GetSystemStatus, self.serviceCallbackGetSystemStatus)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_GetSystemStatus}')
 
-        full_service_name_RemoveUserGrip = self._get_full_ros2_name('RemoveUserGrip')
+        full_service_name_RemoveUserGrip = f'{self.get_namespace()}/{self.get_name()}/RemoveUserGrip'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_RemoveUserGrip}')
         self.service_RemoveUserGrip = self.create_service(covvi_interfaces.srv.RemoveUserGrip, full_service_name_RemoveUserGrip, self.serviceCallbackRemoveUserGrip)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_RemoveUserGrip}')
 
-        full_service_name_ResetRealtimeCfg = self._get_full_ros2_name('ResetRealtimeCfg')
+        full_service_name_ResetRealtimeCfg = f'{self.get_namespace()}/{self.get_name()}/ResetRealtimeCfg'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_ResetRealtimeCfg}')
         self.service_ResetRealtimeCfg = self.create_service(covvi_interfaces.srv.ResetRealtimeCfg, full_service_name_ResetRealtimeCfg, self.serviceCallbackResetRealtimeCfg)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_ResetRealtimeCfg}')
 
-        full_service_name_ResetUserGrips = self._get_full_ros2_name('ResetUserGrips')
+        full_service_name_ResetUserGrips = f'{self.get_namespace()}/{self.get_name()}/ResetUserGrips'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_ResetUserGrips}')
         self.service_ResetUserGrips = self.create_service(covvi_interfaces.srv.ResetUserGrips, full_service_name_ResetUserGrips, self.serviceCallbackResetUserGrips)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_ResetUserGrips}')
 
-        full_service_name_SendUserGrip = self._get_full_ros2_name('SendUserGrip')
+        full_service_name_SendUserGrip = f'{self.get_namespace()}/{self.get_name()}/SendUserGrip'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_SendUserGrip}')
         self.service_SendUserGrip = self.create_service(covvi_interfaces.srv.SendUserGrip, full_service_name_SendUserGrip, self.serviceCallbackSendUserGrip)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_SendUserGrip}')
 
-        full_service_name_SetCurrentGrip = self._get_full_ros2_name('SetCurrentGrip')
+        full_service_name_SetCurrentGrip = f'{self.get_namespace()}/{self.get_name()}/SetCurrentGrip'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_SetCurrentGrip}')
         self.service_SetCurrentGrip = self.create_service(covvi_interfaces.srv.SetCurrentGrip, full_service_name_SetCurrentGrip, self.serviceCallbackSetCurrentGrip)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_SetCurrentGrip}')
 
-        full_service_name_SetDigitMove = self._get_full_ros2_name('SetDigitMove')
+        full_service_name_SetDigitMove = f'{self.get_namespace()}/{self.get_name()}/SetDigitMove'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_SetDigitMove}')
         self.service_SetDigitMove = self.create_service(covvi_interfaces.srv.SetDigitMove, full_service_name_SetDigitMove, self.serviceCallbackSetDigitMove)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_SetDigitMove}')
 
-        full_service_name_SetDigitPosn = self._get_full_ros2_name('SetDigitPosn')
+        full_service_name_SetDigitPosn = f'{self.get_namespace()}/{self.get_name()}/SetDigitPosn'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_SetDigitPosn}')
         self.service_SetDigitPosn = self.create_service(covvi_interfaces.srv.SetDigitPosn, full_service_name_SetDigitPosn, self.serviceCallbackSetDigitPosn)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_SetDigitPosn}')
 
-        full_service_name_SetDigitPosnStop = self._get_full_ros2_name('SetDigitPosnStop')
+        full_service_name_SetDigitPosnStop = f'{self.get_namespace()}/{self.get_name()}/SetDigitPosnStop'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_SetDigitPosnStop}')
         self.service_SetDigitPosnStop = self.create_service(covvi_interfaces.srv.SetDigitPosnStop, full_service_name_SetDigitPosnStop, self.serviceCallbackSetDigitPosnStop)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_SetDigitPosnStop}')
 
-        full_service_name_SetDirectControlClose = self._get_full_ros2_name('SetDirectControlClose')
+        full_service_name_SetDirectControlClose = f'{self.get_namespace()}/{self.get_name()}/SetDirectControlClose'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_SetDirectControlClose}')
         self.service_SetDirectControlClose = self.create_service(covvi_interfaces.srv.SetDirectControlClose, full_service_name_SetDirectControlClose, self.serviceCallbackSetDirectControlClose)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_SetDirectControlClose}')
 
-        full_service_name_SetDirectControlOpen = self._get_full_ros2_name('SetDirectControlOpen')
+        full_service_name_SetDirectControlOpen = f'{self.get_namespace()}/{self.get_name()}/SetDirectControlOpen'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_SetDirectControlOpen}')
         self.service_SetDirectControlOpen = self.create_service(covvi_interfaces.srv.SetDirectControlOpen, full_service_name_SetDirectControlOpen, self.serviceCallbackSetDirectControlOpen)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_SetDirectControlOpen}')
 
-        full_service_name_SetDirectControlStop = self._get_full_ros2_name('SetDirectControlStop')
+        full_service_name_SetDirectControlStop = f'{self.get_namespace()}/{self.get_name()}/SetDirectControlStop'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_SetDirectControlStop}')
         self.service_SetDirectControlStop = self.create_service(covvi_interfaces.srv.SetDirectControlStop, full_service_name_SetDirectControlStop, self.serviceCallbackSetDirectControlStop)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_SetDirectControlStop}')
 
-        full_service_name_SetHandPowerOff = self._get_full_ros2_name('SetHandPowerOff')
+        full_service_name_SetHandPowerOff = f'{self.get_namespace()}/{self.get_name()}/SetHandPowerOff'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_SetHandPowerOff}')
         self.service_SetHandPowerOff = self.create_service(covvi_interfaces.srv.SetHandPowerOff, full_service_name_SetHandPowerOff, self.serviceCallbackSetHandPowerOff)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_SetHandPowerOff}')
 
-        full_service_name_SetHandPowerOn = self._get_full_ros2_name('SetHandPowerOn')
+        full_service_name_SetHandPowerOn = f'{self.get_namespace()}/{self.get_name()}/SetHandPowerOn'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_SetHandPowerOn}')
         self.service_SetHandPowerOn = self.create_service(covvi_interfaces.srv.SetHandPowerOn, full_service_name_SetHandPowerOn, self.serviceCallbackSetHandPowerOn)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_SetHandPowerOn}')
 
-        full_service_name_SetRealtimeCfg = self._get_full_ros2_name('SetRealtimeCfg')
+        full_service_name_SetRealtimeCfg = f'{self.get_namespace()}/{self.get_name()}/SetRealtimeCfg'
         self.get_logger().info(f'Creating ROS2 Service: {full_service_name_SetRealtimeCfg}')
         self.service_SetRealtimeCfg = self.create_service(covvi_interfaces.srv.SetRealtimeCfg, full_service_name_SetRealtimeCfg, self.serviceCallbackSetRealtimeCfg)
         self.get_logger().info(f'Created ROS2 Service:  {full_service_name_SetRealtimeCfg}')
@@ -207,66 +277,66 @@ class CovviServerNode(CovviBaseNode):
 
         self.get_logger().info(f'Creating ROS2 Topic Publishers')
 
-        full_publisher_name_DigitStatusAllMsg = self._get_full_ros2_name('DigitStatusAllMsg')
+        full_publisher_name_DigitStatusAllMsg = f'{self.get_namespace()}/{self.get_name()}/DigitStatusAllMsg'
         self.get_logger().info(f'Creating ROS2 Topic Publisher: {full_publisher_name_DigitStatusAllMsg}')
         self.publisher_DigitStatusAllMsg = self.create_publisher(covvi_interfaces.msg.DigitStatusAllMsg, full_publisher_name_DigitStatusAllMsg, 10)
         self.eci.callbackDigitStatusAll = self.publisherCallbackDigitStatusAllMsg
         self.get_logger().info(f'Created ROS2 Topic Publisher:  {full_publisher_name_DigitStatusAllMsg}')
 
-        full_publisher_name_DigitPosnAllMsg = self._get_full_ros2_name('DigitPosnAllMsg')
+        full_publisher_name_DigitPosnAllMsg = f'{self.get_namespace()}/{self.get_name()}/DigitPosnAllMsg'
         self.get_logger().info(f'Creating ROS2 Topic Publisher: {full_publisher_name_DigitPosnAllMsg}')
         self.publisher_DigitPosnAllMsg = self.create_publisher(covvi_interfaces.msg.DigitPosnAllMsg, full_publisher_name_DigitPosnAllMsg, 10)
         self.eci.callbackDigitPosnAll = self.publisherCallbackDigitPosnAllMsg
         self.get_logger().info(f'Created ROS2 Topic Publisher:  {full_publisher_name_DigitPosnAllMsg}')
 
-        full_publisher_name_CurrentGripMsg = self._get_full_ros2_name('CurrentGripMsg')
+        full_publisher_name_CurrentGripMsg = f'{self.get_namespace()}/{self.get_name()}/CurrentGripMsg'
         self.get_logger().info(f'Creating ROS2 Topic Publisher: {full_publisher_name_CurrentGripMsg}')
         self.publisher_CurrentGripMsg = self.create_publisher(covvi_interfaces.msg.CurrentGripMsg, full_publisher_name_CurrentGripMsg, 10)
         self.eci.callbackCurrentGrip = self.publisherCallbackCurrentGripMsg
         self.get_logger().info(f'Created ROS2 Topic Publisher:  {full_publisher_name_CurrentGripMsg}')
 
-        full_publisher_name_ElectrodeValueMsg = self._get_full_ros2_name('ElectrodeValueMsg')
+        full_publisher_name_ElectrodeValueMsg = f'{self.get_namespace()}/{self.get_name()}/ElectrodeValueMsg'
         self.get_logger().info(f'Creating ROS2 Topic Publisher: {full_publisher_name_ElectrodeValueMsg}')
         self.publisher_ElectrodeValueMsg = self.create_publisher(covvi_interfaces.msg.ElectrodeValueMsg, full_publisher_name_ElectrodeValueMsg, 10)
         self.eci.callbackElectrodeValue = self.publisherCallbackElectrodeValueMsg
         self.get_logger().info(f'Created ROS2 Topic Publisher:  {full_publisher_name_ElectrodeValueMsg}')
 
-        full_publisher_name_InputStatusMsg = self._get_full_ros2_name('InputStatusMsg')
+        full_publisher_name_InputStatusMsg = f'{self.get_namespace()}/{self.get_name()}/InputStatusMsg'
         self.get_logger().info(f'Creating ROS2 Topic Publisher: {full_publisher_name_InputStatusMsg}')
         self.publisher_InputStatusMsg = self.create_publisher(covvi_interfaces.msg.InputStatusMsg, full_publisher_name_InputStatusMsg, 10)
         self.eci.callbackInputStatus = self.publisherCallbackInputStatusMsg
         self.get_logger().info(f'Created ROS2 Topic Publisher:  {full_publisher_name_InputStatusMsg}')
 
-        full_publisher_name_MotorCurrentAllMsg = self._get_full_ros2_name('MotorCurrentAllMsg')
+        full_publisher_name_MotorCurrentAllMsg = f'{self.get_namespace()}/{self.get_name()}/MotorCurrentAllMsg'
         self.get_logger().info(f'Creating ROS2 Topic Publisher: {full_publisher_name_MotorCurrentAllMsg}')
         self.publisher_MotorCurrentAllMsg = self.create_publisher(covvi_interfaces.msg.MotorCurrentAllMsg, full_publisher_name_MotorCurrentAllMsg, 10)
         self.eci.callbackMotorCurrentAll = self.publisherCallbackMotorCurrentAllMsg
         self.get_logger().info(f'Created ROS2 Topic Publisher:  {full_publisher_name_MotorCurrentAllMsg}')
 
-        full_publisher_name_DigitTouchAllMsg = self._get_full_ros2_name('DigitTouchAllMsg')
+        full_publisher_name_DigitTouchAllMsg = f'{self.get_namespace()}/{self.get_name()}/DigitTouchAllMsg'
         self.get_logger().info(f'Creating ROS2 Topic Publisher: {full_publisher_name_DigitTouchAllMsg}')
         self.publisher_DigitTouchAllMsg = self.create_publisher(covvi_interfaces.msg.DigitTouchAllMsg, full_publisher_name_DigitTouchAllMsg, 10)
         self.eci.callbackDigitTouchAll = self.publisherCallbackDigitTouchAllMsg
         self.get_logger().info(f'Created ROS2 Topic Publisher:  {full_publisher_name_DigitTouchAllMsg}')
 
-        full_publisher_name_EnvironmentalMsg = self._get_full_ros2_name('EnvironmentalMsg')
+        full_publisher_name_EnvironmentalMsg = f'{self.get_namespace()}/{self.get_name()}/EnvironmentalMsg'
         self.get_logger().info(f'Creating ROS2 Topic Publisher: {full_publisher_name_EnvironmentalMsg}')
         self.publisher_EnvironmentalMsg = self.create_publisher(covvi_interfaces.msg.EnvironmentalMsg, full_publisher_name_EnvironmentalMsg, 10)
         self.eci.callbackEnvironmental = self.publisherCallbackEnvironmentalMsg
         self.get_logger().info(f'Created ROS2 Topic Publisher:  {full_publisher_name_EnvironmentalMsg}')
 
-        full_publisher_name_SystemStatusMsg = self._get_full_ros2_name('SystemStatusMsg')
+        full_publisher_name_SystemStatusMsg = f'{self.get_namespace()}/{self.get_name()}/SystemStatusMsg'
         self.get_logger().info(f'Creating ROS2 Topic Publisher: {full_publisher_name_SystemStatusMsg}')
         self.publisher_SystemStatusMsg = self.create_publisher(covvi_interfaces.msg.SystemStatusMsg, full_publisher_name_SystemStatusMsg, 10)
         self.get_logger().info(f'Created ROS2 Topic Publisher:  {full_publisher_name_SystemStatusMsg}')
 
-        full_publisher_name_OrientationMsg = self._get_full_ros2_name('OrientationMsg')
+        full_publisher_name_OrientationMsg = f'{self.get_namespace()}/{self.get_name()}/OrientationMsg'
         self.get_logger().info(f'Creating ROS2 Topic Publisher: {full_publisher_name_OrientationMsg}')
         self.publisher_OrientationMsg = self.create_publisher(covvi_interfaces.msg.OrientationMsg, full_publisher_name_OrientationMsg, 10)
         self.eci.callbackOrientation = self.publisherCallbackOrientationMsg
         self.get_logger().info(f'Created ROS2 Topic Publisher:  {full_publisher_name_OrientationMsg}')
 
-        full_publisher_name_MotorLimitsMsg = self._get_full_ros2_name('MotorLimitsMsg')
+        full_publisher_name_MotorLimitsMsg = f'{self.get_namespace()}/{self.get_name()}/MotorLimitsMsg'
         self.get_logger().info(f'Creating ROS2 Topic Publisher: {full_publisher_name_MotorLimitsMsg}')
         self.publisher_MotorLimitsMsg = self.create_publisher(covvi_interfaces.msg.MotorLimitsMsg, full_publisher_name_MotorLimitsMsg, 10)
         self.eci.callbackMotorLimits = self.publisherCallbackMotorLimitsMsg
@@ -631,6 +701,107 @@ class CovviServerNode(CovviBaseNode):
         self.get_logger().info('Sending getDigitStatus_all response to client')
         return response
 
+    def serviceCallbackGetEciConnected(self,
+            request:  covvi_interfaces.srv.GetEciConnected.Request,
+            response: covvi_interfaces.srv.GetEciConnected.Response,
+        )          -> covvi_interfaces.srv.GetEciConnected.Response:
+        """Get the connected status of the ECI"""
+        self.get_logger().info('Calling eci.getEciConnected synchronously')
+        msg: eci.bool = self.eci.getEciConnected()
+        self.get_logger().info('Called eci.getEciConnected synchronously')
+        self.get_logger().info('Building getEciConnected response')
+        response.result = bool(msg)
+        self.get_logger().info('Built getEciConnected response')
+        self.get_logger().info('Sending getEciConnected response to client')
+        return response
+
+    def serviceCallbackGetEciDeviceClassType(self,
+            request:  covvi_interfaces.srv.GetEciDeviceClassType.Request,
+            response: covvi_interfaces.srv.GetEciDeviceClassType.Response,
+        )          -> covvi_interfaces.srv.GetEciDeviceClassType.Response:
+        """Get the 'device class' of the ECI"""
+        self.get_logger().info('Calling eci.getEciDeviceClassType synchronously')
+        msg: eci.DeviceClassType = self.eci.getEciDeviceClassType()
+        self.get_logger().info('Called eci.getEciDeviceClassType synchronously')
+        self.get_logger().info('Building getEciDeviceClassType response')
+        response.result       = covvi_interfaces.msg.DeviceClassType()
+        response.result.value = eci.DeviceClassType(msg.value).value
+        self.get_logger().info('Built getEciDeviceClassType response')
+        self.get_logger().info('Sending getEciDeviceClassType response to client')
+        return response
+
+    def serviceCallbackGetEciError(self,
+            request:  covvi_interfaces.srv.GetEciError.Request,
+            response: covvi_interfaces.srv.GetEciError.Response,
+        )          -> covvi_interfaces.srv.GetEciError.Response:
+        """Get the error status of the ECI"""
+        self.get_logger().info('Calling eci.getEciError synchronously')
+        msg: eci.bool = self.eci.getEciError()
+        self.get_logger().info('Called eci.getEciError synchronously')
+        self.get_logger().info('Building getEciError response')
+        response.result = bool(msg)
+        self.get_logger().info('Built getEciError response')
+        self.get_logger().info('Sending getEciError response to client')
+        return response
+
+    def serviceCallbackGetEciManufacturerID(self,
+            request:  covvi_interfaces.srv.GetEciManufacturerID.Request,
+            response: covvi_interfaces.srv.GetEciManufacturerID.Response,
+        )          -> covvi_interfaces.srv.GetEciManufacturerID.Response:
+        """Get the manufacturer ID of the ECI"""
+        self.get_logger().info('Calling eci.getEciManufacturerID synchronously')
+        msg: eci.Uint8 = self.eci.getEciManufacturerID()
+        self.get_logger().info('Called eci.getEciManufacturerID synchronously')
+        self.get_logger().info('Building getEciManufacturerID response')
+        response.result = eci.Uint8(msg)
+        self.get_logger().info('Built getEciManufacturerID response')
+        self.get_logger().info('Sending getEciManufacturerID response to client')
+        return response
+
+    def serviceCallbackGetEciPowerOn(self,
+            request:  covvi_interfaces.srv.GetEciPowerOn.Request,
+            response: covvi_interfaces.srv.GetEciPowerOn.Response,
+        )          -> covvi_interfaces.srv.GetEciPowerOn.Response:
+        """Get the 'power on' status of the ECI"""
+        self.get_logger().info('Calling eci.getEciPowerOn synchronously')
+        msg: eci.bool = self.eci.getEciPowerOn()
+        self.get_logger().info('Called eci.getEciPowerOn synchronously')
+        self.get_logger().info('Building getEciPowerOn response')
+        response.result = bool(msg)
+        self.get_logger().info('Built getEciPowerOn response')
+        self.get_logger().info('Sending getEciPowerOn response to client')
+        return response
+
+    def serviceCallbackGetEciProductID(self,
+            request:  covvi_interfaces.srv.GetEciProductID.Request,
+            response: covvi_interfaces.srv.GetEciProductID.Response,
+        )          -> covvi_interfaces.srv.GetEciProductID.Response:
+        """Get the product ID of the ECI"""
+        self.get_logger().info('Calling eci.getEciProductID synchronously')
+        msg: eci.Product = self.eci.getEciProductID()
+        self.get_logger().info('Called eci.getEciProductID synchronously')
+        self.get_logger().info('Building getEciProductID response')
+        response.result             = covvi_interfaces.msg.Product()
+        response.result.value       = covvi_interfaces.msg.ProductString()
+        response.result.value.value = eci.ProductString(msg.value.value).value
+        self.get_logger().info('Built getEciProductID response')
+        self.get_logger().info('Sending getEciProductID response to client')
+        return response
+
+    def serviceCallbackGetEciSerialNumber(self,
+            request:  covvi_interfaces.srv.GetEciSerialNumber.Request,
+            response: covvi_interfaces.srv.GetEciSerialNumber.Response,
+        )          -> covvi_interfaces.srv.GetEciSerialNumber.Response:
+        """Get the serial number of the ECI"""
+        self.get_logger().info('Calling eci.getEciSerialNumber synchronously')
+        msg: eci.Int16 = self.eci.getEciSerialNumber()
+        self.get_logger().info('Called eci.getEciSerialNumber synchronously')
+        self.get_logger().info('Building getEciSerialNumber response')
+        response.result = eci.Int16(msg)
+        self.get_logger().info('Built getEciSerialNumber response')
+        self.get_logger().info('Sending getEciSerialNumber response to client')
+        return response
+
     def serviceCallbackGetEnvironmental(self,
             request:  covvi_interfaces.srv.GetEnvironmental.Request,
             response: covvi_interfaces.srv.GetEnvironmental.Response,
@@ -732,6 +903,107 @@ class CovviServerNode(CovviBaseNode):
         response.result.value = str(msg.value)
         self.get_logger().info('Built getGripName response')
         self.get_logger().info('Sending getGripName response to client')
+        return response
+
+    def serviceCallbackGetHandConnected(self,
+            request:  covvi_interfaces.srv.GetHandConnected.Request,
+            response: covvi_interfaces.srv.GetHandConnected.Response,
+        )          -> covvi_interfaces.srv.GetHandConnected.Response:
+        """Get the connected status of the Hand"""
+        self.get_logger().info('Calling eci.getHandConnected synchronously')
+        msg: eci.bool = self.eci.getHandConnected()
+        self.get_logger().info('Called eci.getHandConnected synchronously')
+        self.get_logger().info('Building getHandConnected response')
+        response.result = bool(msg)
+        self.get_logger().info('Built getHandConnected response')
+        self.get_logger().info('Sending getHandConnected response to client')
+        return response
+
+    def serviceCallbackGetHandDeviceClassType(self,
+            request:  covvi_interfaces.srv.GetHandDeviceClassType.Request,
+            response: covvi_interfaces.srv.GetHandDeviceClassType.Response,
+        )          -> covvi_interfaces.srv.GetHandDeviceClassType.Response:
+        """Get the 'device class' of the Hand"""
+        self.get_logger().info('Calling eci.getHandDeviceClassType synchronously')
+        msg: eci.DeviceClassType = self.eci.getHandDeviceClassType()
+        self.get_logger().info('Called eci.getHandDeviceClassType synchronously')
+        self.get_logger().info('Building getHandDeviceClassType response')
+        response.result       = covvi_interfaces.msg.DeviceClassType()
+        response.result.value = eci.DeviceClassType(msg.value).value
+        self.get_logger().info('Built getHandDeviceClassType response')
+        self.get_logger().info('Sending getHandDeviceClassType response to client')
+        return response
+
+    def serviceCallbackGetHandError(self,
+            request:  covvi_interfaces.srv.GetHandError.Request,
+            response: covvi_interfaces.srv.GetHandError.Response,
+        )          -> covvi_interfaces.srv.GetHandError.Response:
+        """Get the error status of the Hand"""
+        self.get_logger().info('Calling eci.getHandError synchronously')
+        msg: eci.bool = self.eci.getHandError()
+        self.get_logger().info('Called eci.getHandError synchronously')
+        self.get_logger().info('Building getHandError response')
+        response.result = bool(msg)
+        self.get_logger().info('Built getHandError response')
+        self.get_logger().info('Sending getHandError response to client')
+        return response
+
+    def serviceCallbackGetHandManufacturerID(self,
+            request:  covvi_interfaces.srv.GetHandManufacturerID.Request,
+            response: covvi_interfaces.srv.GetHandManufacturerID.Response,
+        )          -> covvi_interfaces.srv.GetHandManufacturerID.Response:
+        """Get the manufacturer ID of the Hand"""
+        self.get_logger().info('Calling eci.getHandManufacturerID synchronously')
+        msg: eci.Uint8 = self.eci.getHandManufacturerID()
+        self.get_logger().info('Called eci.getHandManufacturerID synchronously')
+        self.get_logger().info('Building getHandManufacturerID response')
+        response.result = eci.Uint8(msg)
+        self.get_logger().info('Built getHandManufacturerID response')
+        self.get_logger().info('Sending getHandManufacturerID response to client')
+        return response
+
+    def serviceCallbackGetHandPowerOn(self,
+            request:  covvi_interfaces.srv.GetHandPowerOn.Request,
+            response: covvi_interfaces.srv.GetHandPowerOn.Response,
+        )          -> covvi_interfaces.srv.GetHandPowerOn.Response:
+        """Get the 'power on' status of the Hand"""
+        self.get_logger().info('Calling eci.getHandPowerOn synchronously')
+        msg: eci.bool = self.eci.getHandPowerOn()
+        self.get_logger().info('Called eci.getHandPowerOn synchronously')
+        self.get_logger().info('Building getHandPowerOn response')
+        response.result = bool(msg)
+        self.get_logger().info('Built getHandPowerOn response')
+        self.get_logger().info('Sending getHandPowerOn response to client')
+        return response
+
+    def serviceCallbackGetHandProductID(self,
+            request:  covvi_interfaces.srv.GetHandProductID.Request,
+            response: covvi_interfaces.srv.GetHandProductID.Response,
+        )          -> covvi_interfaces.srv.GetHandProductID.Response:
+        """Get the product ID of the Hand"""
+        self.get_logger().info('Calling eci.getHandProductID synchronously')
+        msg: eci.Product = self.eci.getHandProductID()
+        self.get_logger().info('Called eci.getHandProductID synchronously')
+        self.get_logger().info('Building getHandProductID response')
+        response.result             = covvi_interfaces.msg.Product()
+        response.result.value       = covvi_interfaces.msg.ProductString()
+        response.result.value.value = eci.ProductString(msg.value.value).value
+        self.get_logger().info('Built getHandProductID response')
+        self.get_logger().info('Sending getHandProductID response to client')
+        return response
+
+    def serviceCallbackGetHandSerialNumber(self,
+            request:  covvi_interfaces.srv.GetHandSerialNumber.Request,
+            response: covvi_interfaces.srv.GetHandSerialNumber.Response,
+        )          -> covvi_interfaces.srv.GetHandSerialNumber.Response:
+        """Get the serial number of the Hand"""
+        self.get_logger().info('Calling eci.getHandSerialNumber synchronously')
+        msg: eci.Int16 = self.eci.getHandSerialNumber()
+        self.get_logger().info('Called eci.getHandSerialNumber synchronously')
+        self.get_logger().info('Building getHandSerialNumber response')
+        response.result = eci.Int16(msg)
+        self.get_logger().info('Built getHandSerialNumber response')
+        self.get_logger().info('Sending getHandSerialNumber response to client')
         return response
 
     def serviceCallbackGetHello(self,
@@ -1086,7 +1358,7 @@ class CovviServerNode(CovviBaseNode):
         self.get_logger().info('Setting up setDigitMove call')
         digit = eci.Digit(request.digit.value)
         position = int(request.position)
-        speed       = eci.Percentage()
+        speed       = eci.Speed()
         speed.value = int(request.speed.value)
         power       = eci.Percentage()
         power.value = int(request.power.value)
@@ -1114,7 +1386,7 @@ class CovviServerNode(CovviBaseNode):
         response.result.msg_id.value         = eci.MessageID(msg.msg_id.value).value
         response.result.data_len             = int(msg.data_len)
         response.result.position             = int(msg.position)
-        response.result.speed                = covvi_interfaces.msg.Percentage()
+        response.result.speed                = covvi_interfaces.msg.Speed()
         response.result.speed.value          = int(msg.speed.value)
         response.result.power                = covvi_interfaces.msg.Percentage()
         response.result.power.value          = int(msg.power.value)
@@ -1130,7 +1402,7 @@ class CovviServerNode(CovviBaseNode):
         )          -> covvi_interfaces.srv.SetDigitPosn.Response:
         """Set the digit position to move to and the movement speed for each digit and thumb rotation"""
         self.get_logger().info('Setting up setDigitPosn call')
-        speed       = eci.Percentage()
+        speed       = eci.Speed()
         speed.value = int(request.speed.value)
         thumb = int(request.thumb)
         index = int(request.index)
@@ -1161,7 +1433,8 @@ class CovviServerNode(CovviBaseNode):
         response.result.msg_id               = covvi_interfaces.msg.MessageID()
         response.result.msg_id.value         = eci.MessageID(msg.msg_id.value).value
         response.result.data_len             = int(msg.data_len)
-        response.result.speed                = int(msg.speed)
+        response.result.speed                = covvi_interfaces.msg.Speed()
+        response.result.speed.value          = int(msg.speed.value)
         response.result.rotate               = bool(msg.rotate)
         response.result.little               = bool(msg.little)
         response.result.ring                 = bool(msg.ring)
@@ -1197,7 +1470,8 @@ class CovviServerNode(CovviBaseNode):
         response.result.msg_id               = covvi_interfaces.msg.MessageID()
         response.result.msg_id.value         = eci.MessageID(msg.msg_id.value).value
         response.result.data_len             = int(msg.data_len)
-        response.result.speed                = int(msg.speed)
+        response.result.speed                = covvi_interfaces.msg.Speed()
+        response.result.speed.value          = int(msg.speed.value)
         response.result.rotate               = bool(msg.rotate)
         response.result.little               = bool(msg.little)
         response.result.ring                 = bool(msg.ring)
@@ -1220,7 +1494,7 @@ class CovviServerNode(CovviBaseNode):
         )          -> covvi_interfaces.srv.SetDirectControlClose.Response:
         """"""
         self.get_logger().info('Setting up setDirectControlClose call')
-        speed       = eci.Percentage()
+        speed       = eci.Speed()
         speed.value = int(request.speed.value)
         self.get_logger().info('setDirectControlClose call has been setup')
         self.get_logger().info('Calling eci.setDirectControlClose synchronously')
@@ -1240,7 +1514,7 @@ class CovviServerNode(CovviBaseNode):
         response.result.msg_id.value         = eci.MessageID(msg.msg_id.value).value
         response.result.data_len             = int(msg.data_len)
         response.result.command              = int(msg.command)
-        response.result.speed                = covvi_interfaces.msg.Percentage()
+        response.result.speed                = covvi_interfaces.msg.Speed()
         response.result.speed.value          = int(msg.speed.value)
         self.get_logger().info('Built setDirectControlClose response')
         self.get_logger().info('Sending setDirectControlClose response to client')
@@ -1252,7 +1526,7 @@ class CovviServerNode(CovviBaseNode):
         )          -> covvi_interfaces.srv.SetDirectControlOpen.Response:
         """"""
         self.get_logger().info('Setting up setDirectControlOpen call')
-        speed       = eci.Percentage()
+        speed       = eci.Speed()
         speed.value = int(request.speed.value)
         self.get_logger().info('setDirectControlOpen call has been setup')
         self.get_logger().info('Calling eci.setDirectControlOpen synchronously')
@@ -1272,7 +1546,7 @@ class CovviServerNode(CovviBaseNode):
         response.result.msg_id.value         = eci.MessageID(msg.msg_id.value).value
         response.result.data_len             = int(msg.data_len)
         response.result.command              = int(msg.command)
-        response.result.speed                = covvi_interfaces.msg.Percentage()
+        response.result.speed                = covvi_interfaces.msg.Speed()
         response.result.speed.value          = int(msg.speed.value)
         self.get_logger().info('Built setDirectControlOpen response')
         self.get_logger().info('Sending setDirectControlOpen response to client')
@@ -1298,7 +1572,7 @@ class CovviServerNode(CovviBaseNode):
         response.result.msg_id.value         = eci.MessageID(msg.msg_id.value).value
         response.result.data_len             = int(msg.data_len)
         response.result.command              = int(msg.command)
-        response.result.speed                = covvi_interfaces.msg.Percentage()
+        response.result.speed                = covvi_interfaces.msg.Speed()
         response.result.speed.value          = int(msg.speed.value)
         self.get_logger().info('Built setDirectControlStop response')
         self.get_logger().info('Sending setDirectControlStop response to client')
@@ -1708,15 +1982,15 @@ def main(args: Iterable[Any] | None = None) -> None:
     _, host, *_ = sys.argv
     try:
         with rclpy.init(args=args):
-            covvi_server_node = CovviServerNode(host=host)
-            covvi_server_node.start_eci()
-            covvi_server_node.get_logger().info('Turning power on to the hand...')
-            covvi_server_node.eci.setHandPowerOn()
-            covvi_server_node.get_logger().info('Setting realtime config...')
-            covvi_server_node.eci.setRealtimeCfg(environmental=True, orientation=True, digit_touch=True)
-            covvi_server_node.get_logger().info('Spinning...')
-            rclpy.spin(covvi_server_node)
-            covvi_server_node.stop_eci()
+            node = CovviServerNode(host=host)
+            node.start_eci()
+            node.get_logger().info('Turning power on to the hand...')
+            node.eci.setHandPowerOn()
+            node.get_logger().info('Setting realtime config...')
+            node.eci.setRealtimeCfg(environmental=True, orientation=True, digit_touch=True)
+            node.get_logger().info('Spinning...')
+            rclpy.spin(node)
+            node.stop_eci()
     except (KeyboardInterrupt, ExternalShutdownException):
         pass
 

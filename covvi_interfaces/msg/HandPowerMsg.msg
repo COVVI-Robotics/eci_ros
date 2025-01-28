@@ -4,4 +4,4 @@ Command          cmd_type               # <class 'eci.primitives.command.Command
 MessageID        msg_id                 # <enum 'MessageID'> nwHandPower
 uint8            data_len               # <class 'int'> 
 bool             enable                 # <class 'bool'> True
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

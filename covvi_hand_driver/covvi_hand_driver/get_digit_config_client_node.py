@@ -10,9 +10,9 @@ from covvi_hand_driver.covvi_base_client_node import CovviBaseClientNode, public
 
 
 class GetDigitConfigClientNode(CovviBaseClientNode):
-    def __init__(self, service: str = '', node_name: str = 'covvi_get_digit_config_client_node', **kwargs):
-        super().__init__(service=service, node_name=node_name, **kwargs)
-        full_service_name_GetDigitConfig = self._get_full_ros2_name('GetDigitConfig', service=service)
+    def __init__(self, service: str = '', **kwargs):
+        super().__init__(service=service, **kwargs)
+        full_service_name_GetDigitConfig = f'{self.get_namespace()}/{service}/GetDigitConfig'
         self.get_logger().info(f'Creating ROS2 Client:   {full_service_name_GetDigitConfig}')
         self.client_GetDigitConfig = self.create_client(
             covvi_interfaces.srv.GetDigitConfig,
@@ -43,9 +43,9 @@ class GetDigitConfigClientNode(CovviBaseClientNode):
 def main(args: Iterable[Any] | None = None) -> None:
     _, service, *_ = sys.argv
     rclpy.init(args=args)
-    covvi_get_digit_config_client_node = GetDigitConfigClientNode(service=service)
-    rclpy.spin(covvi_get_digit_config_client_node)
-    covvi_get_digit_config_client_node.destroy_node()
+    node = GetDigitConfigClientNode(service=service)
+    rclpy.spin(node)
+    node.destroy_node()
     rclpy.shutdown()
 
 

@@ -1,10 +1,10 @@
-Percentage       speed           
-uint8            thumb           
-uint8            index           
-uint8            middle          
-uint8            ring            
-uint8            little          
-uint8            rotate          
+Speed            speed
+uint8            thumb
+uint8            index
+uint8            middle
+uint8            ring
+uint8            little
+uint8            rotate
 ---
 DigitPosnSetMsg result
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

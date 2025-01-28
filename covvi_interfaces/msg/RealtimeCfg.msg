@@ -9,4 +9,4 @@ bool digit_error
 bool environmental  
 bool orientation    
 bool motor_limits   
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

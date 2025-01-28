@@ -11,4 +11,4 @@ bool             touch                  # <class 'bool'>
 bool             stall                  # <class 'bool'> 
 bool             stopped                # <class 'bool'> 
 bool             active                 # <class 'bool'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

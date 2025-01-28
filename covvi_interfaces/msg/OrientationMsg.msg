@@ -6,4 +6,4 @@ uint8            data_len               # <class 'int'>
 int16            x                      # <class 'eci.primitives.dtypes.Int16'> 
 int16            y                      # <class 'eci.primitives.dtypes.Int16'> 
 int16            z                      # <class 'eci.primitives.dtypes.Int16'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

@@ -10,4 +10,4 @@ string GLIDE     = "GLIDE [49]"
 string ADAPT     = "ADAPT [50]"
 string ROS       = "ROS [65]"
 string value
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

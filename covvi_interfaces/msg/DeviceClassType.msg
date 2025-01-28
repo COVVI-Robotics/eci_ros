@@ -16,4 +16,4 @@ uint8 ECI               = 54
 uint8 WRIST             = 65
 uint8 HAPTIC            = 66
 uint8 value
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

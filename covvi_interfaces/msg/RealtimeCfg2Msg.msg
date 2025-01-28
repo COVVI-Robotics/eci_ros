@@ -6,4 +6,4 @@ uint8            data_len               # <class 'int'>
 bool             motor_limits           # <class 'bool'> 
 bool             orientation            # <class 'bool'> 
 bool             environmental          # <class 'bool'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

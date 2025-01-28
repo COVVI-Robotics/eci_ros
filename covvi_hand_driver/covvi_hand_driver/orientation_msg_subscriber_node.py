@@ -9,9 +9,9 @@ from covvi_hand_driver.covvi_base_client_node import CovviBaseClientNode
 
 
 class OrientationMsgSubscriberNode(CovviBaseClientNode):
-    def __init__(self, callback: Callable | None = None, service: str = '', node_name: str = 'covvi_orientation_msg_subscriber_node', **kwargs):
-        super().__init__(service=service, node_name=node_name, **kwargs)
-        full_publisher_name_OrientationMsg = self._get_full_ros2_name('OrientationMsg', service=service)
+    def __init__(self, callback: Callable | None = None, service: str = '', **kwargs):
+        super().__init__(service=service, **kwargs)
+        full_publisher_name_OrientationMsg = f'{self.get_namespace()}/{service}/OrientationMsg'
         self.get_logger().info(f'Creating ROS2 Subscriber: {full_publisher_name_OrientationMsg}')
         self.subscriber_OrientationMsg = self.create_subscription(
             covvi_interfaces.msg.OrientationMsg,
@@ -25,9 +25,9 @@ class OrientationMsgSubscriberNode(CovviBaseClientNode):
 def main(args: Iterable[Any] | None = None) -> None:
     _, service, *_ = sys.argv
     rclpy.init(args=args)
-    covvi_orientation_msg_subscriber_node = OrientationMsgSubscriberNode(service=service)
-    rclpy.spin(covvi_orientation_msg_subscriber_node)
-    covvi_orientation_msg_subscriber_node.destroy_node()
+    node = OrientationMsgSubscriberNode(service=service)
+    rclpy.spin(node)
+    node.destroy_node()
     rclpy.shutdown()
 
 

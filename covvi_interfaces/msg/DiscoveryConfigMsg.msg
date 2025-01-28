@@ -15,4 +15,4 @@ bool             hand_power             # <class 'bool'>
 bool             client_connected       # <class 'bool'> 
 FourOctetAddress client_address         # <class 'eci.primitives.four_octet_address.FourOctetAddress'> 0.0.0.0
 FourOctetAddress request_source_address # <class 'eci.primitives.four_octet_address.FourOctetAddress'> 0.0.0.0
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

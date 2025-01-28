@@ -5,4 +5,4 @@ MessageID        msg_id                 # <enum 'MessageID'> caUpdateDownload
 uint8            data_len               # <class 'int'> 
 BulkDataType     data_type              # <enum 'BulkDataType'> GRIP
 GripNameIndex    grip_name_index        # <enum 'GripNameIndex'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

@@ -10,4 +10,4 @@ bool             humidity_limit         # <class 'bool'>
 bool             temperature_limit      # <class 'bool'> 
 uint8            bluetooth_status       # <class 'int'> 
 uint8            change_notifications   # <class 'int'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

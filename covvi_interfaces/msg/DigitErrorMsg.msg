@@ -7,4 +7,4 @@ bool             position               # <class 'bool'>
 bool             limits                 # <class 'bool'> 
 bool             motor                  # <class 'bool'> 
 bool             hall                   # <class 'bool'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

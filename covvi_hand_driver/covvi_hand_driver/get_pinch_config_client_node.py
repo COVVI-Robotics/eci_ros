@@ -10,9 +10,9 @@ from covvi_hand_driver.covvi_base_client_node import CovviBaseClientNode, public
 
 
 class GetPinchConfigClientNode(CovviBaseClientNode):
-    def __init__(self, service: str = '', node_name: str = 'covvi_get_pinch_config_client_node', **kwargs):
-        super().__init__(service=service, node_name=node_name, **kwargs)
-        full_service_name_GetPinchConfig = self._get_full_ros2_name('GetPinchConfig', service=service)
+    def __init__(self, service: str = '', **kwargs):
+        super().__init__(service=service, **kwargs)
+        full_service_name_GetPinchConfig = f'{self.get_namespace()}/{service}/GetPinchConfig'
         self.get_logger().info(f'Creating ROS2 Client:   {full_service_name_GetPinchConfig}')
         self.client_GetPinchConfig = self.create_client(
             covvi_interfaces.srv.GetPinchConfig,
@@ -40,9 +40,9 @@ class GetPinchConfigClientNode(CovviBaseClientNode):
 def main(args: Iterable[Any] | None = None) -> None:
     _, service, *_ = sys.argv
     rclpy.init(args=args)
-    covvi_get_pinch_config_client_node = GetPinchConfigClientNode(service=service)
-    rclpy.spin(covvi_get_pinch_config_client_node)
-    covvi_get_pinch_config_client_node.destroy_node()
+    node = GetPinchConfigClientNode(service=service)
+    rclpy.spin(node)
+    node.destroy_node()
     rclpy.shutdown()
 
 

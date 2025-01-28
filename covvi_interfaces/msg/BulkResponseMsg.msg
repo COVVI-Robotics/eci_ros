@@ -11,4 +11,4 @@ uint8            byte5                  # <class 'int'>
 uint8            byte6                  # <class 'int'> 
 uint8            byte7                  # <class 'int'> 
 uint8            byte8                  # <class 'int'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

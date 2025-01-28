@@ -9,4 +9,4 @@ uint8 TRIPOD_OPEN    = 7
 uint8 TWO_FINGERS    = 8
 uint8 WAVE           = 9
 uint8 value
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

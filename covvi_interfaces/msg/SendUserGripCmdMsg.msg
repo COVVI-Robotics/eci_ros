@@ -8,4 +8,4 @@ GripNameIndex    grip_name_index        # <enum 'GripNameIndex'>
 uint8            file_len               # <class 'int'> 
 uint8            major_version          # <class 'int'> 
 uint8            minor_version          # <class 'int'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI

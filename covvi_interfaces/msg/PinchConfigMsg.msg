@@ -8,4 +8,4 @@ uint8            index_pos              # <class 'int'>
 uint8            middle_pos             # <class 'int'> 
 uint8            one_finger_rotate_pos  # <class 'int'> 
 uint8            two_finger_rotate_pos  # <class 'int'> 
-# Copyright © 2024 Covvi
+# Copyright © 2024 COVVI
