@@ -6,7 +6,7 @@ package_name = 'covvi_hand_driver'
 
 setup(
     name='covvi_hand_driver',
-    version='1.1.5',
+    version='1.1.6',
     packages=find_packages(exclude=['test']),
     data_files=[
         (os.path.join('share', 'ament_index', 'resource_index', 'packages'), [os.path.join('resource', 'covvi_hand_driver')]),
@@ -15,7 +15,7 @@ setup(
     ],
     install_requires=[
         'setuptools',
-        'eci==1.1.5',
+        'covvi-eci==1.1.6',
     ],
     zip_safe=True,
     maintainer='Jordan Birdsall',
