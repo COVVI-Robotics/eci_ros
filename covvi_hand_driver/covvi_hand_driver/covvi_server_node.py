@@ -1981,16 +1981,18 @@ class CovviServerNode(CovviBaseNode):
 def main(args: Iterable[Any] | None = None) -> None:
     _, host, *_ = sys.argv
     try:
-        with rclpy.init(args=args):
-            node = CovviServerNode(host=host)
-            node.start_eci()
-            node.get_logger().info('Turning power on to the hand...')
-            node.eci.setHandPowerOn()
-            node.get_logger().info('Setting realtime config...')
-            node.eci.setRealtimeCfg(environmental=True, orientation=True, digit_touch=True)
-            node.get_logger().info('Spinning...')
-            rclpy.spin(node)
-            node.stop_eci()
+        rclpy.init(args=args)
+        node = CovviServerNode(host=host)
+        node.start_eci()
+        node.get_logger().info('Turning power on to the hand...')
+        node.eci.setHandPowerOn()
+        node.get_logger().info('Setting realtime config...')
+        node.eci.setRealtimeCfg(environmental=True, orientation=True, digit_touch=True)
+        node.get_logger().info('Spinning...')
+        rclpy.spin(node)
+        node.stop_eci()
+        node.destroy_node()
+        rclpy.shutdown()
     except (KeyboardInterrupt, ExternalShutdownException):
         pass
 

@@ -3,6 +3,7 @@ from time import sleep
 from typing import Iterable, Any
 
 import rclpy
+from rclpy.executors import ExternalShutdownException
 
 import covvi_interfaces.srv
 import covvi_interfaces.msg
@@ -43,11 +44,14 @@ class GetMotorCurrentAllClientNode(CovviBaseClientNode):
 
 def main(args: Iterable[Any] | None = None) -> None:
     _, service, *_ = sys.argv
-    rclpy.init(args=args)
-    node = GetMotorCurrentAllClientNode(service=service)
-    rclpy.spin(node)
-    node.destroy_node()
-    rclpy.shutdown()
+    try:
+        rclpy.init(args=args)
+        node = GetMotorCurrentAllClientNode(service=service)
+        rclpy.spin(node)
+        node.destroy_node()
+        rclpy.shutdown()
+    except (KeyboardInterrupt, ExternalShutdownException):
+        pass
 
 
 if __name__ == '__main__':

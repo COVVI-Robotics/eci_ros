@@ -139,8 +139,11 @@ class CovviClientNode(
 def main(args: Iterable[Any] | None = None) -> None:
     _, service, *_ = sys.argv
     try:
-        with rclpy.init(args=args):
-            rclpy.spin(CovviClientNode(service=service))
+        rclpy.init(args=args)
+        node = CovviClientNode(service=service)
+        rclpy.spin(node)
+        node.destroy_node()
+        rclpy.shutdown()
     except (KeyboardInterrupt, ExternalShutdownException):
         pass
 
